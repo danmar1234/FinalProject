@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 
 
-/*
+
 mongoose.connect(
     process.env.MONGODB_URI,
     { 
@@ -26,19 +26,11 @@ mongoose.connect(
 )
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err.message));
-*/
-mongoose.connect(
-    'mongodb://127.0.0.1:27017',
-    { 
-        useNewUrlParser: true,
-    }
-)
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err.message));
 
 
 
-//app.use(cors());
+
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/uploads", express.static("uploads"));
