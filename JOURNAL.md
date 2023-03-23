@@ -1,0 +1,7 @@
+When I first started working on this project I wanted to use sites like Facebook and Offerup to get listings from, but sadly Facebook has made it really hard to scrape their listings, which I'm pretty sure is illegal anyway, and their API doesn't allow getting listings from Facebook Marketplace. Offerup doesn't even have an API.
+That was by far the biggest problem I faced and it wasted a lot of my time because I tried to find a way to make it work.
+So I had to change the website, I decided to make a online marketplace instead, where the users can sign up to post cars they want to put up for sale and to see other car listings.
+I used mongodb for the db since I didn't really need a relational one, there are only user posts in the db, the users are stored and managed by auth0, I simply take their user ID's and insert them in each of their posts.
+I didn't have too many problems, except file storage which I still haven't been able to fix. I'm using cloudinary, and multer for the middleware that is required, But no matter what I change I can't get away from the "Cannot read properties of undefined (reading 'path')" error.
+Other than that I struggled with the delete method as it kept deleting everything on refresh because of the wrong way I had the onclick of the delete button setup, but I figured it out and it was a tiny mistake.
+I hope I can find what's causing the issue with cloudinary and a way to fix it in the time I have left. Otherwise, I'm pretty happy with the authentication, the layout, and the overall function of the website.
