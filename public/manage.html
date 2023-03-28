@@ -134,6 +134,8 @@
                     .then(response => response.json())
                     .then(data => console.log(data))
                     .catch(err => console.log(err));
+
+                    window.location.reload();
                 };
 
                 document.getElementById('manage').appendChild(PostDiv);              

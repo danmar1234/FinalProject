@@ -4,8 +4,7 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Post = require('./model/model');
-const cloudinary = require('cloudinary').v2;
-const multer = require('multer');
+
 
 require('dotenv').config();
 const PORT = process.env.PORT;
@@ -80,44 +79,20 @@ app.get('/manage', (req, res) => {
 
 
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "./uploads");
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    },
-});
-var uploader = multer({ storage: storage });
+/*
 
+global.img;
 
-// Configuration 
-cloudinary.config({
-    cloud_name: process.env.CLOUDNAME,
-    api_key: process.env.APIKEY,
-    api_secret: process.env.APISECRET
-});
-
-
-
-var img;
-
-app.post("/upload", uploader.single("file"), async (req, res) => {
+app.post("/upload", async (req, res) => {
     try {
-        const upload = await cloudinary.uploader.upload(req.file.path);
-        img = upload.secure_url;
-        
-        return res.json({
-        success: true,
-        file: upload.secure_url,
-        });
+        img = req.body;
     }
     catch (err) {
         console.error(err.message);
         res.status(400).send("error");
     }
 });
-
+*/
 
 
 
@@ -137,7 +112,7 @@ app.post("/post", (req, res) => {
         description: req.body.description,
         title: req.body.title,
         contact: req.body.contact,
-        image: img
+        image: req.body.image
       });
 
       post.save().then(post => res.status(201).send(post));
